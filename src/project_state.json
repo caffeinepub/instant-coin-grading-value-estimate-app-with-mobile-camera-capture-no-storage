@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "AI-powered mobile coin-grading app that uses the phone camera to provide real-time, instant evaluations using official numismatist grades and estimated value, without storing submissions.",
+  "architectural_notes": [
+    "App should support real-time analysis from mobile camera input.",
+    "Evaluations should be instant and not persist/store user submissions."
+  ],
+  "known_issues": [
+    "Camera access sometimes reports \"permissions denied\" even when not listed as blocked (likely OS-level permission or browser permission state mismatch).",
+    "Analysis flow navigates to Results instantly with no loading state and passes no image/metadata params, causing blank Results screen (no photo displayed, no output).",
+    "Analyze action currently allows navigation even when no image is selected (missing validation/guard).",
+    "Camera capture flow does not reliably trigger the browser/OS camera permission prompt; user expects the browser to ask for permission when opening the camera."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-mobile-first-camera-capture-flow-that-lets-the-user-take-a-photo-of-a-coin-or-upload-an-existing-image-and-preview-it-before-analysis",
+      "title": "Create a mobile-first camera capture flow that lets the user take a photo of a coin (or upload an existing image) and preview it before analysis.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-instant-no-storage-analysis-flow-when-the-user-submits-an-image-the-app-returns-a-grade-using-official-numismatist-grade-labels-and-an-estimated-value-without-persisting-the-user-submission-or-image",
+      "title": "Implement an instant, no-storage analysis flow: when the user submits an image, the app returns a grade using official numismatist grade labels and an estimated value, without persisting the user submission or image.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-because-external-ai-ml-services-and-custom-model-hosting-are-not-supported-implement-a-built-in-heuristic-image-analysis-approach-to-approximate-coin-condition-e-g-sharpness-contrast-edge-clarity-metrics-and-map-it-to-official-numismatic-grades-and-clearly-label-the-result-as-an-estimate-in-the-ui",
+      "title": "Because external AI/ML services and custom model hosting are not supported, implement a built-in, heuristic image-analysis approach to approximate coin condition (e.g., sharpness/contrast/edge clarity metrics) and map it to official numismatic grades, and clearly label the result as an estimate in the UI.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-support-a-real-time-user-experience-by-providing-live-guidance-and-fast-feedback-show-capture-tips-lighting-angle-focus-automatically-downscale-compress-images-client-side-before-sending-and-show-progress-states-during-analysis",
+      "title": "Support a “real-time” user experience by providing live guidance and fast feedback: show capture tips (lighting, angle, focus), automatically downscale/compress images client-side before sending, and show progress states during analysis.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-minimal-coin-metadata-inputs-needed-for-value-estimation-since-image-only-identification-is-unreliable-country-region-denomination-year-mint-mark-optional-and-a-free-text-notes-field-include-these-inputs-in-the-analysis-request",
+      "title": "Add minimal coin metadata inputs needed for value estimation (since image-only identification is unreliable): country/region, denomination, year, mint mark (optional), and a free-text notes field; include these inputs in the analysis request.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-coherent-visual-theme-for-the-app-and-apply-it-consistently-across-screens-capture-metadata-results-choose-a-distinct-style-appropriate-for-numismatics-avoid-blue-purple-as-the-primary-palette",
+      "title": "Create a coherent visual theme for the app and apply it consistently across screens (capture, metadata, results). Choose a distinct style appropriate for numismatics (avoid blue/purple as the primary palette).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-static-generated-brand-assets-and-wire-them-into-the-ui-an-app-logo-and-a-subtle-background-hero-illustration-consistent-with-the-visual-theme",
+      "title": "Add static, generated brand assets and wire them into the UI: an app logo and a subtle background/hero illustration consistent with the visual theme.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-prevent-the-app-from-ever-rendering-a-blank-screen-in-the-analysis-flow-by-adding-explicit-fallback-ui-for-unexpected-state-combinations-e-g-step-is-results-but-analysisresult-is-null-metadata-is-null-or-image-is-null-the-fallback-must-show-an-english-error-message-and-a-clear-action-to-restart-the-flow",
+      "title": "Prevent the app from ever rendering a blank screen in the analysis flow by adding explicit fallback UI for unexpected state combinations (e.g., step is \"results\" but analysisResult is null, metadata is null, or image is null). The fallback must show an English error message and a clear action to restart the flow.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-analyze-submission-state-machine-so-that-the-ui-only-transitions-to-the-results-step-after-analysis-has-either-produced-a-valid-result-or-a-user-visible-error-state-is-ready-to-display-do-not-navigate-transition-to-results-immediately-if-analysis-has-not-completed",
+      "title": "Fix the analyze submission state machine so that the UI only transitions to the results step after analysis has either produced a valid result or a user-visible error state is ready to display. Do not navigate/transition to results immediately if analysis has not completed.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-guards-validation-to-prevent-starting-analysis-when-required-inputs-are-missing-at-minimum-no-captured-image-if-the-user-attempts-to-analyze-without-an-image-show-an-english-error-message-and-provide-a-way-to-return-to-capture-upload",
+      "title": "Add guards/validation to prevent starting analysis when required inputs are missing (at minimum: no captured image). If the user attempts to analyze without an image, show an English error message and provide a way to return to capture/upload.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-camera-permission-error-recovery-messaging-so-that-when-camera-access-fails-e-g-permissions-denied-or-os-browser-block-the-camera-screen-provides-clear-english-guidance-and-a-reliable-fallback-path-to-upload-an-image",
+      "title": "Improve camera permission error recovery messaging so that when camera access fails (e.g., permissions denied or OS/browser block), the camera screen provides clear English guidance and a reliable fallback path to upload an image.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-camera-capture-flow-so-that-opening-the-camera-reliably-triggers-the-browser-os-permission-prompt-instead-of-immediately-failing-with-a-permission-error-ensure-the-app-requests-camera-access-only-in-direct-response-to-an-explicit-user-gesture-and-provides-a-clear-user-facing-action-to-initiate-the-permission-request-when-entering-camera-mode",
+      "title": "Update the camera capture flow so that opening the camera reliably triggers the browser/OS permission prompt (instead of immediately failing with a permission error). Ensure the app requests camera access only in direct response to an explicit user gesture and provides a clear, user-facing action to initiate the permission request when entering camera mode.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Camera/photo capture and upload flow for coin images (mobile phone camera).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Real-time AI-based coin condition grading using official numismatist grades (e.g., G/VG/F/VF/XF/AU/MS).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Coin value estimation based on AI analysis of images (grade/value output).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Instant evaluation mode with no storage of user submissions.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Implement backend value-estimation logic based on provided coin metadata plus the derived grade (e.g., a configurable baseline table and multipliers by grade), and return a transparent breakdown (baseline + multiplier) to display in the UI.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Ensure the backend can return a non-null analysis result without requiring a separate baseline configuration call by providing default baseline values (or a deterministic fallback baseline) for common denominations, and/or by handling missing baselines with a non-null response that includes a clear, user-displayable explanation in the returned data.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Instant coin grading & value estimate app with mobile camera capture (no storage)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

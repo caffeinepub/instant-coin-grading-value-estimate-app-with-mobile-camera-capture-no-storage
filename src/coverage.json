@@ -1,0 +1,37 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-13T20:29:28.031Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 1,
+    "implemented": 1,
+    "items": [
+      {
+        "id": "REQ-14",
+        "summary": "Update the camera capture flow so that opening the camera reliably triggers the browser/OS permission prompt (instead of immediately failing with a permission error). Ensure the app requests camera access only in direct response to an explicit user gesture and provides a clear, user-facing action to initiate the permission request when entering camera mode.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/CoinCapture/CoinCameraCapture.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/CoinCapture/CoinCameraCapture.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/CoinCapture/CoinCameraCapture.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

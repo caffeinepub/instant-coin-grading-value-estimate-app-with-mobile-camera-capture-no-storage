@@ -1,0 +1,22 @@
+{
+  "frontend/src/App.tsx": "Main application component that renders the header, coin grading flow, and footer with attribution.",
+  "frontend/src/components/Brand/AppHeader.tsx": "Header component displaying the app logo and title with warm metallic styling.",
+  "frontend/src/components/Brand/HeroBackdrop.tsx": "Backdrop component that overlays the hero background image with low opacity for visual depth.",
+  "frontend/src/components/CoinCapture/CoinGradingFlow.tsx": "Main flow orchestrator managing capture/upload selection, preview, metadata collection, analysis, and results display with comprehensive state validation, error handling, and fallback UI for all invalid state combinations.",
+  "frontend/src/components/CoinCapture/CoinCameraCapture.tsx": "Camera capture component with explicit user-gesture-based camera start button, comprehensive permission error guidance with browser settings instructions, stable preview container with loading/error/initial states, and fallback upload option.",
+  "frontend/src/components/CoinCapture/ImageUploadPicker.tsx": "File upload component allowing users to select coin images from their device.",
+  "frontend/src/components/CoinCapture/CapturePreview.tsx": "Preview screen showing captured/uploaded image with retake and continue actions.",
+  "frontend/src/components/CoinCapture/CaptureTips.tsx": "Informational alert displaying capture best practices for optimal coin analysis.",
+  "frontend/src/components/Metadata/CoinMetadataForm.tsx": "Form component collecting required coin metadata (country, denomination, year) and optional fields (mint mark, notes) with validation, flow-level error display, and recovery actions.",
+  "frontend/src/components/Results/AnalysisResult.tsx": "Results display showing grade, estimated value, value breakdown, quality metrics, and submitted metadata with defensive rendering for missing data and comprehensive error states.",
+  "frontend/src/components/Results/SubmittedMetadataSummary.tsx": "Card component displaying the user-submitted coin metadata in a grid layout.",
+  "frontend/src/components/Results/EstimateDisclaimer.tsx": "Warning alert explaining that grades and values are estimates and recommending professional appraisal.",
+  "frontend/src/hooks/useCoinAnalysis.ts": "React hook managing coin analysis workflow including image preprocessing, feature extraction, backend communication, and proper async state machine with completion signals and error handling.",
+  "frontend/src/utils/coinImageHeuristics.ts": "Client-side deterministic image analysis calculating sharpness, contrast, and edge clarity metrics using canvas-based algorithms.",
+  "frontend/src/utils/imagePreprocess.ts": "Image preprocessing utility that resizes and compresses images to optimize performance before analysis.",
+  "frontend/src/types/coin.ts": "TypeScript type definitions for coin metadata and analysis result data structures.",
+  "frontend/src/camera/useCamera.ts": "Custom React hook providing camera access, photo capture, camera switching, and comprehensive error handling.",
+  "frontend/src/index.css": "Global styles with warm metallic OKLCH color palette (bronze/gold/charcoal) for both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with warm metallic colors, custom shadows, and consistent border radii.",
+  "frontend/src/components/CoinCapture/FlowFallbackErrorCard.tsx": "Reusable error card component that displays when the analysis flow encounters an unexpected state, with a restart action to return to capture selection."
+}

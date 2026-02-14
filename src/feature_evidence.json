@@ -1,0 +1,24 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-camera-capture-flow-so-that-opening-the-camera-reliably-triggers-the-browser-os-permission-prompt-instead-of-immediately-failing-with-a-permission-error-ensure-the-app-requests-camera-access-only-in-direct-response-to-an-explicit-user-gesture-and-provides-a-clear-user-facing-action-to-initiate-the-permission-request-when-entering-camera-mode",
+      "featureTitle": "Update the camera capture flow so that opening the camera reliably triggers the browser/OS permission prompt (instead of immediately failing with a permission error). Ensure the app requests camera access only in direct response to an explicit user gesture and provides a clear, user-facing action to initiate the permission request when entering camera mode.",
+      "files": [
+        "frontend/src/components/CoinCapture/CoinCameraCapture.tsx"
+      ],
+      "components": [
+        "camera@1.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

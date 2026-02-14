@@ -1,0 +1,40 @@
+{
+  "kind": "build_request",
+  "title": "Ensure camera capture triggers the browser permission prompt reliably",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-14",
+      "text": "Update the camera capture flow so that opening the camera reliably triggers the browser/OS permission prompt (instead of immediately failing with a permission error). Ensure the app requests camera access only in direct response to an explicit user gesture and provides a clear, user-facing action to initiate the permission request when entering camera mode.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "The camera function should allow the browser to ask for permission"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When a user selects the camera capture option, the UI shows an explicit user action (e.g., a button) that starts the camera and triggers the browser permission prompt if permission has not yet been granted or denied.",
+        "Camera access is not requested automatically on component mount in a way that can bypass/disable the permission prompt on browsers that require a gesture (notably mobile browsers).",
+        "If the user previously denied permission, the camera screen shows an English message explaining that permission was blocked and provides clear next steps (e.g., browser/site settings) plus a reliable fallback to upload an image.",
+        "If the user grants permission, the live camera preview becomes active and the user can capture a photo as before.",
+        "No blank/blocked UI states occur while waiting for permission; a visible loading state is shown while the app is attempting to start the camera.",
+        "Changes are implemented within the existing camera components/hook (e.g., frontend/src/components/CoinCapture/CoinCameraCapture.tsx and frontend/src/camera/useCamera.ts) without modifying any files under frontend/src/components/ui or other immutable paths."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Keep all user-facing text in English."
+  ],
+  "nonGoals": [
+    "Adding new authentication providers or changing Internet Identity behavior.",
+    "Adding real-time communication features (e.g., WebSockets) or external camera/ML services."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-13T20:29:28.029Z",
+  "summary": "Diff updates the camera capture UI component to introduce an explicit user-gesture camera start action, adds user-facing permission-blocked guidance with next steps and an upload fallback, and updates repository metadata/summaries. No evidence of edits to forbidden immutable paths under frontend/src/components/ui.",
+  "missing_requirements": [],
+  "hallucinated_features": [],
+  "confidence": 0.62,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/CoinCapture/CoinCameraCapture.tsx",
+    "project_state.json"
+  ]
+}

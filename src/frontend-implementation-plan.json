@@ -1,0 +1,26 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Reliable, user-gesture-based camera permission prompting",
+  "requirements": [
+    {
+      "id": "REQ-14",
+      "summary": "Refactor camera capture UI to request camera access only on explicit user gesture and provide clear permission-blocked guidance with upload fallback.",
+      "acceptanceCriteria": [
+        "When a user selects the camera capture option, the UI shows an explicit user action (e.g., a button) that starts the camera and triggers the browser permission prompt if permission has not yet been granted or denied.",
+        "Camera access is not requested automatically on component mount in a way that can bypass/disable the permission prompt on browsers that require a gesture (notably mobile browsers).",
+        "If the user previously denied permission, the camera screen shows an English message explaining that permission was blocked and provides clear next steps (e.g., browser/site settings) plus a reliable fallback to upload an image.",
+        "If the user grants permission, the live camera preview becomes active and the user can capture a photo as before.",
+        "No blank/blocked UI states occur while waiting for permission; a visible loading state is shown while the app is attempting to start the camera.",
+        "Changes are implemented within the existing camera components/hook (e.g., frontend/src/components/CoinCapture/CoinCameraCapture.tsx and frontend/src/camera/useCamera.ts) without modifying any files under frontend/src/components/ui or other immutable paths."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CoinCapture/CoinCameraCapture.tsx",
+          "operation": "modify",
+          "description": "Update the camera flow to be gesture-driven: remove the mount-time startCamera() call, add an explicit primary 'Start Camera' action that calls startCamera() only from the button click, and gate capture/switch controls until the camera is active and not loading. Use the selected 'camera' component's useCamera hook to manage camera state/errors and ensure permission prompting works on mobile; verify the component's usage instructions before implementing. Expand the permission-denied (error.type === 'permission') UI copy to clearly explain that camera permission was blocked and provide next steps (browser/site settings + refresh) and a prominent 'Upload Instead' fallback. Ensure a stable non-collapsing preview container is shown even before starting, and show a visible loading overlay while startCamera() is in progress to avoid blank/blocked UI states."
+        }
+      ]
+    }
+  ]
+}
